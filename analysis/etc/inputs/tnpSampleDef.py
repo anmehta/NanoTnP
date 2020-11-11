@@ -1,6 +1,7 @@
 from libPython.tnpClassUtils import tnpSample
 import os
 cwd = os.getcwd()
+eosdpsww2016 = '/eos/cms/store/cmst3/group/dpsww/tnp_trees_nano/'
 latinov6_16 = '%s/../ntuple/results/latinov6_16/' % cwd
 latinov6_17 = '%s/../ntuple/results/latinov6_17/' % cwd
 latinov6_18 = '%s/../ntuple/results/latinov6_18/' % cwd
@@ -12,6 +13,31 @@ latinov7_18 = '%s/../skim/results/latinov7_18/'   % cwd
 nanoV7_16 = '%s/../skim/results/Full2016v7_102X/' % cwd
 nanoV7_17 = '%s/../skim/results/Full2017v7_102X/' % cwd
 nanoV7_18 = '%s/../skim/results/Full2018v7_102X/' % cwd
+
+
+
+
+dpsww2016 = {
+
+    'DY_madgraph' : tnpSample('DY_madgraph', 
+                                        eosdpsww2016 + 'DYJetsToLL_M50_LO.root',
+                                        isMC = True, nEvts =  -1 ),
+    'DY_amcatnlo' : tnpSample('DY_amcatnlo', 
+                                        eosdpsww2016 + 'DYJetsToLL_M50.root',
+                                        isMC = True, nEvts =  -1 ),
+#    'data_Run2016' : tnpSample('data_Run2016' , eosdpsww2016 + 'SingleElectron_Run2016.root' , lumi = 35.9 ),
+    'data_Run2016' : tnpSample('data_Run2016' , eosdpsww2016 + 'SingleElectron_Run2016B_02Apr2020.root' , lumi = 5.750 ),
+##   'data_Run2016B' : tnpSample('data_Run2016B' , eosdpsww2016 + 'SingleElectron_Run2016B_02Apr2020.root' , lumi = 5.750 ),
+##   'data_Run2016C' : tnpSample('data_Run2016C' , eosdpsww2016 + 'SingleElectron_Run2016C_02Apr2020.root' , lumi = 2.573 ),
+##   'data_Run2016D' : tnpSample('data_Run2016D' , eosdpsww2016 + 'SingleElectron_Run2016D_02Apr2020.root' , lumi = 4.242 ),
+##   'data_Run2016E' : tnpSample('data_Run2016E' , eosdpsww2016 + 'SingleElectron_Run2016E_02Apr2020.root' , lumi = 4.422 ),
+##   'data_Run2016F' : tnpSample('data_Run2016F' , eosdpsww2016 + 'SingleElectron_Run2016F_02Apr2020.root' , lumi = 3.283 ),
+##   'data_Run2016G' : tnpSample('data_Run2016G' , eosdpsww2016 + 'SingleElectron_Run2016G_02Apr2020.root' , lumi = 7.562 ),
+##   'data_Run2016H' : tnpSample('data_Run2016H' , eosdpsww2016 + 'SingleElectron_Run2016H_02Apr2020.root' , lumi = 8.979 ),
+
+
+
+}
 
 nanov5_16 = {
     'DYJetsToLL_M-50-LO_ext2' : tnpSample('DYJetsToLL_M-50-LO_ext2',

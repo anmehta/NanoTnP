@@ -1,4 +1,3 @@
-
 ### python specific import
 import argparse
 import os
@@ -96,9 +95,9 @@ if args.createHists:
         if sampleType == args.sample or args.sample == 'all' :
             print('creating histogram for sample ')
             sample.dump()
-            var = { 'name' : 'pair_mass', 'nbins' : 80, 'min' : 50, 'max': 130 }
+            var = { 'name' : 'TnP_mass', 'nbins' : 80, 'min' : 50, 'max': 130 }
             if sample.mcTruth:
-                var = { 'name' : 'pair_mass', 'nbins' : 80, 'min' : 50, 'max': 130 }
+                var = { 'name' : 'TnP_mass', 'nbins' : 80, 'min' : 50, 'max': 130 }
             tnpRoot.makePassFailHistograms( sample, tnpConf.flags[args.flag], tnpBins, var )
 
     sys.exit(0)

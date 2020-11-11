@@ -36,7 +36,8 @@ def makePassFailHistograms(sample, flag, bindef, var):
 
         cuts = bindef['bins'][ib]['cut']
         if sample.mcTruth:
-            cuts = '%s && mcTrue==1' % cuts
+##am            cuts = '%s && mcTrue==1' % cuts
+            cuts = '%s ' % cuts
         if not sample.cut is None:
             cuts = '%s && %s' % (cuts, sample.cut)
 

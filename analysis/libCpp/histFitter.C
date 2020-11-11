@@ -1,3 +1,4 @@
+// changed 50,130 to 60,120
 #include "RooDataHist.h"
 #include "RooWorkspace.h"
 #include "RooRealVar.h"
@@ -22,7 +23,7 @@
 
 using namespace RooFit;
 using namespace std;
-
+//ROOT::Math::MinimizerOptions::SetDefaultMaxFunctionCalls(500);
 class tnpFitter {
 public:
   tnpFitter( TFile *file, std::string histname  );
@@ -90,7 +91,7 @@ tnpFitter::tnpFitter(TH1 *hPass, TH1 *hFail, std::string histname  ) : _useMinos
     }
   
   _work = new RooWorkspace("w") ;
-  _work->factory("x[50,130]");
+  _work->factory("x[50,130]"); // changing it to def 50,130 decreases the peak height from the fit
   
   RooDataHist rooPass("hPass","hPass",*_work->var("x"),hPass);
   RooDataHist rooFail("hFail","hFail",*_work->var("x"),hFail);
@@ -181,10 +182,19 @@ void tnpFitter::fits(bool mcTruth,string title) {
   _work->pdf("pdfFail")->plotOn( pFail, LineColor(kRed) );
   _work->pdf("pdfFail")->plotOn( pFail, Components("bkgFail"),LineColor(kBlue),LineStyle(kDashed));
   _work->data("hFail") ->plotOn( pFail );
-
+  
   TCanvas c("c","c",1100,450);
   c.Divide(3,1);
   TPad *padText = (TPad*)c.GetPad(1);
+
+//am TPaveText *textAM = new TPaveText(0,0.7,1,0.8);
+//am textAM->SetFillColor(0);
+//am textAM->SetBorderSize(0);
+//am textAM->SetTextAlign(12);
+//am textAM->AddText(TString::Format("* #chi^{2}/ndf  pass: %f, fail : %f",pPass->chiSquare(),pFail->chiSquare()));
+//am textAM->Draw();
+
+
   textParForCanvas( resPass,resFail, padText );
   c.cd(2); pPass->Draw();
   c.cd(3); pFail->Draw();
